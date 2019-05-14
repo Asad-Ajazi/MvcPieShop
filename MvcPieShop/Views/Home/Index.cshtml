@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MvcPieShop.Models.Pie>
+
+<h1>@ViewBag.Title</h1>    
+
+    @foreach (var pie in Model)
+    {
+        <div>
+            <h2>@pie.Name</h2>
+            <h3>@pie.Price.ToString("c")</h3>
+        </div>
+    }
