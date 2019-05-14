@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcPieShop.Models;
+using MvcPieShop.ViewModels;
 
 namespace MvcPieShop.Controllers
 {
@@ -18,11 +19,18 @@ namespace MvcPieShop.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Title = "ViewbagTitlePieShop";
+            
             // get all pies and order by name then pass to view.
             var pies = _pieRepository.GetAllPies().OrderBy(p=>p.Name);
 
-            return View(pies);
+            //using ViewModel instead of viewbag etc.
+            var homeViewModel = new HomeViewModel()
+            {
+                Title = "Welcome to the Pie Shop",
+                Pies = pies.ToList()
+            };
+
+            return View(homeViewModel);
         }
     }
 }
