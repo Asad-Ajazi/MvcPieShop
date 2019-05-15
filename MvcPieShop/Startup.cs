@@ -31,6 +31,8 @@ namespace MvcPieShop
 
             // temp, when asked for ipie, give mockpie.
             services.AddTransient<IPieRepository, PieRepository>();
+            services.AddTransient<IFeedbackRepository, FeedbackRepository>();
+
             services.AddMvc();
         }
 
